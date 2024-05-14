@@ -31,6 +31,10 @@ The program will learn from the user what to do, and will repeat what the user d
 
 # Bonus 
 
+> add concept art
+
+make things look cool
+
 > add an GUI
 
 Gui good
