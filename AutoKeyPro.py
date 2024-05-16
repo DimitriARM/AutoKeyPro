@@ -1,7 +1,7 @@
 
 # AutoKeyPro™ developed by ARM Industries.
 
-# @author :  SpaghettiSalesman  on Github
+# @author :  SpaghettiSalesman on Github
 
 
 #One file implementation, this wont be pretty to look at, but whatever.
@@ -46,16 +46,23 @@ class AUTOKEYPRO():
         self.state = "first_boot"
         self.macro_profiles = []
         self.label_counter = 1
+        self.active_profile
 
     def display_profiles(self):
         for profile in self.macro_profiles:
             print(profile)
 
-    def create_macro_profile(self,profile_name,label_counter):
-        retProf = MacroProfile(profile_name,label_counter)
+
+#TODO: make this guy save the macros in a file or something.
+    def create_macro_profile(self):
+        profile_name = input("Automation name : ")
+        retProf = MacroProfile(profile_name,self.label_counter)
         self.label_counter += 1
         self.macro_profiles.append(retProf)
 
+
+
+#TODO: make the guy below do more stuff.
     def display_menu(self): #will be replaced by a gui later, or something like that
         if self.state == "first_boot" :
             print("Welcome to the menu")
@@ -63,12 +70,37 @@ class AUTOKEYPRO():
             if(not self.macro_profiles):
                 ret = input("You have no automation profiles as of yet, would you like to make one? [y,n]")
                 if ret.lower() == "yes" or ret.lower() == "y" :
-                    profile_name = input("Automation name : ")
-                    self.create_macro_profile(profile_name,self.label_counter)
+                    self.create_macro_profile()
 
         elif self.state == "default":
-            pass
+
+            print("1. SELECT PROFILE")
+            print("2. CREATE PROFILE")
+            print("3. EXIT")
+
+            ret = input()
+
+            if ret == "1":
+                print("PROFILE SELECTION: \n ")
+                self.display_profiles()
+                int_ret = int(input())
+                self.active_profile = self.macro_profiles[int_ret]
+
+
+            elif ret == 2:
+                self.create_macro_profile()
+
+            else:
+                exit()
+
+
+
+
 
     def __main__(self):
-        pass
+
+        main_program = AUTOKEYPRO()
+
+        while 1 :
+            main_program.display_menu()
 
