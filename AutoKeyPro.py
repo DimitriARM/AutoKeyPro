@@ -1,165 +1,73 @@
 
 # AutoKeyPro™ developed by ARM Industries.
 
-import keyboard
-import os
-import time
+# @author :  SpaghettiSalesman  on Github
 
-# todo: add requirements.txt
 
-# --------------------------------------------------------------------------------
-# program wide variables (this may be a bad idea)
+#One file implementation, this wont be pretty to look at, but whatever.
 
-# changes how fast AutoKeyPro prints to the console
-# time.sleep(printSpeed)
-printSpeed = 0.6
 
-# --------------------------------------------------------------------------------
+class MacroCommand():
+    def __init__(self,input_combination,output_action, macro_label):
+        self.input_combination = input_combination
+        self.output_action = output_action
+        self.macro_label = macro_label
 
-def main():
 
-    # program introduction
-    print("")
-    print("AutoKeyPro™ developed by ARM Industries.")
-    print("")
 
-    time.sleep(printSpeed)
+class MacroProfile():
+    def __init__(self,profile_name,macro_profile_label):
+        self.profile_name = profile_name
+        self.macro_profile_label = macro_profile_label
+        self.macro_commands = {}
 
-    # Main menu
-    while 1:
+    def create_macro(self):
+        pass
+        #TODO: Get user inputs in a working manner
 
-        print("Main Menu:")
-        time.sleep(printSpeed)
-        print("1 - Learning Mode")
-        print("2 - Execution Mode")
-        print("3 - Forget Mode")
-        print("0 - Exit")
-        time.sleep(printSpeed)
+    def edit_macro(self,macro_label):
+        pass
+        #TODO: Add the editing functionality.
 
-        choice = input("Choice: ")
-        if choice == '1':
-            learning_mode()
-        elif choice == '2':
-            execution_mode()
-        elif choice == '3':
-            forget_mode()
-        elif choice == '0':
-            print("Program terminating...")
-            break
-        else:
-            print("Invalid option")
+    def delete_macro(self, macro_label):
+        pass
+        #TODO: Implement later, also dont forget to de-increment the labels by one.
 
-# --------------------------------------------------------------------------------
-
-def learning_mode():
-
-    # adding time sleeps so it prints nicer
-    time.sleep(printSpeed)
-    print("Learning Mode")
-    time.sleep(printSpeed)
-
-    # create directory to store automations if directory does not exist
-    if os.path.exists("Automations"):
-        print("Directory exists")
-    else:
-        os.mkdir("Automations")
-        print("Directory created")
-
-    time.sleep(printSpeed)
-
-    print("Press ctrl to start")
-    wait_for_start()
-
-    ### create file for automation
-
-    # ask for automation name
-    print("What would you like to name this automation?")
-
-    # get automation name
-    automationName = input("")
-
-    # validate automation name (check if not empty string
-
-    # todo: implement windows file path naming exceptions
-    while automationName == '':
-        automationName = input("Invalid name: ")
-
-    print("your automation name is: ", automationName)
-
-    # count how many files are there
-    list = os.listdir("Automations")
-    numberFiles = len(list)
-
-    # concatenate name with path
-    automationLocation = "Automations\\" + automationName
-
-    # create file
-    try:
-        file = open(automationLocation, "x")
-    except:
-        print("yo, file exists")
+    def view_commands(self):
+        for macro_label in range(1,len(self.macro_commands)):
+            print(self.macro_commands[macro_label]+1)
 
 
 
 
-# --------------------------------------------------------------------------------
+class AUTOKEYPRO():
 
-def execution_mode():
-    print("Execution Mode")
+    def __init__(self):
+        self.state = "first_boot"
+        self.macro_profiles = []
+        self.label_counter = 1
 
+    def display_profiles(self):
+        for profile in self.macro_profiles:
+            print(profile)
 
+    def create_macro_profile(self,profile_name,label_counter):
+        retProf = MacroProfile(profile_name,label_counter)
+        self.label_counter += 1
+        self.macro_profiles.append(retProf)
 
+    def display_menu(self): #will be replaced by a gui later, or something like that
+        if self.state == "first_boot" :
+            print("Welcome to the menu")
 
+            if(not self.macro_profiles):
+                ret = input("You have no automation profiles as of yet, would you like to make one? [y,n]")
+                if(ret.lower() == "yes" || ret.lower() == "y"):
+                    profile_name = input("Automation name : ")
+                    self.create_macro_profile(profile_name,self.label_counter)
 
-# --------------------------------------------------------------------------------
+        elif self.state == "default":
+            pass
 
-def forget_mode():
-    time.sleep(printSpeed)
-    print("forgetting functions...")
-    time.sleep(printSpeed)
-
-    # exists to hold file names in directory
-    directory = []
-
-    print("Select an automation for deletion:")
-    time.sleep(printSpeed)
-
-    # prints files in directory
-    i = 1
-    for file in os.listdir("Automations"):
-        directory.append(file)
-        print(str(i) + " - " + file)
-        i = i + 1
-
-    time.sleep(printSpeed)
-    choice = input("Choice: ")
-
-    while choice == '':
-        choice = input("Choice: ")
-
-    if int(choice) > len(directory):
-        print("out of bounds")
-    else:
-        filePath = "Automations\\" + str(directory[int(choice) - 1])
-        os.remove(filePath)
-
-    time.sleep(printSpeed)
-    print("Automation forgotten!")
-    time.sleep(printSpeed)
-
-
-# --------------------------------------------------------------------------------
-
-def wait_for_start():
-    while True:
-        if keyboard.read_key() == 'ctrl':
-            print("Started!")
-            break
-
-
-
-# --------------------------------------------------------------------------------
-
-main()
-
-# --------------------------------------------------------------------------------
+    def __main__(self):
+        pass
