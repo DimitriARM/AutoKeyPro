@@ -62,7 +62,7 @@ class AUTOKEYPRO():
 
             if(not self.macro_profiles):
                 ret = input("You have no automation profiles as of yet, would you like to make one? [y,n]")
-                if(ret.lower() == "yes" || ret.lower() == "y"):
+                if ret.lower() == "yes" or ret.lower() == "y" :
                     profile_name = input("Automation name : ")
                     self.create_macro_profile(profile_name,self.label_counter)
 
