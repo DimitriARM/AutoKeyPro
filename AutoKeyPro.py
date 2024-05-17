@@ -2,6 +2,8 @@
 
 # @author :  SpaghettiSalesman on Github
 
+from MacroProfile import MacroProfile
+from MacroCommand import MacroCommand
 
 class AUTOKEYPRO():
     def __init__(self):
