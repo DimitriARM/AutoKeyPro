@@ -2,6 +2,7 @@
 
 # @author :  SpaghettiSalesman on Github
 
+
 class AUTOKEYPRO():
     def __init__(self):
         self.state = "first_boot"
