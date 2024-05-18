@@ -14,3 +14,8 @@ question with their respective number 120 times, and made me think again
 and so AutoKeyPro was born.
 
 # Use Cases
+
+
+# Support
+
+Join the support community at https://discord.gg/DRZrUSwW99
