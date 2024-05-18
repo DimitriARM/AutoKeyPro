@@ -1,6 +1,8 @@
 # AutoKeyPro™
  Program for General UI Automations.
 
+    Developed by ARM Industries.
+
 # Motivation
 
 This project was started because I had to remove a lot of followers from my facebook account,
@@ -19,3 +21,7 @@ and so AutoKeyPro was born.
 # Support
 
 Join the support community at https://discord.gg/DRZrUSwW99
+
+# Credits
+
+SpaguettiSalesman and DimitriARM.
