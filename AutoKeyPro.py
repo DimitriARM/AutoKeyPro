@@ -6,7 +6,11 @@
 
 # DEPRECATED: One file implementation, this wont be pretty to look at, but whatever.
 
-# We will bE changing this implementation for multi-file one, but whatever.
+# We will be changing this implementation for multi-file one, but whatever.
+
+# leaving this here for our reference
+'''module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_CONSTANT_NAME,
+CLASS_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name.'''
 
 
 class AutomationCommand:
@@ -15,7 +19,7 @@ class AutomationCommand:
         self.output_action = output_action
         self.automation_label = automation_label
 
-class MacroProfile:
+class AutomationProfile:
     def __init__(self, profile_name, automation_profile_label):
         self.profile_name = profile_name
         self.automation_profile_label = automation_profile_label
@@ -29,7 +33,7 @@ class MacroProfile:
         pass
         #TODO: Add the editing functionality.
 
-    def delete_macro(self, automation_label):
+    def delete_automation(self, automation_label):
         pass
         #TODO: Implement later, also dont forget to de-increment the labels by one.
 
@@ -53,7 +57,7 @@ class AUTOKEYPRO:
     #TODO: make this guy save the automations in a file or something.
     def create_automation_profile(self):
         profile_name = input("Automation name : ")
-        retProf = automationProfile(profile_name, self.label_counter)
+        retProf = automation_profile(profile_name, self.label_counter)
         self.label_counter += 1
         self.automation_profiles.append(retProf)
 
