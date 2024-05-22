@@ -1,76 +1,71 @@
 
 # AutoKeyPro™ developed by ARM Industries.
 
-# @author :  SpaghettiSalesman on Github
+# @author :  SpaghettiSalesman & Dimitri ARM on GitHub
 
 
-#One file implementation, this wont be pretty to look at, but whatever.
+# DEPRECATED: One file implementation, this wont be pretty to look at, but whatever.
+
+# We will bE changing this implementation for multi-file one, but whatever.
 
 
-class MacroCommand():
-    def __init__(self,input_combination,output_action, macro_label):
+class AutomationCommand:
+    def __init__(self, input_combination, output_action, automation_label):
         self.input_combination = input_combination
         self.output_action = output_action
-        self.macro_label = macro_label
+        self.automation_label = automation_label
 
-
-
-class MacroProfile():
-    def __init__(self,profile_name,macro_profile_label):
+class MacroProfile:
+    def __init__(self, profile_name, automation_profile_label):
         self.profile_name = profile_name
-        self.macro_profile_label = macro_profile_label
-        self.macro_commands = {}
+        self.automation_profile_label = automation_profile_label
+        self.automation_commands = {}
 
-    def create_macro(self):
+    def create_automation(self):
         pass
         #TODO: Get user inputs in a working manner
 
-    def edit_macro(self,macro_label):
+    def edit_automation(self, automation_label):
         pass
         #TODO: Add the editing functionality.
 
-    def delete_macro(self, macro_label):
+    def delete_macro(self, automation_label):
         pass
         #TODO: Implement later, also dont forget to de-increment the labels by one.
 
     def view_commands(self):
-        for macro_label in range(1,len(self.macro_commands)):
-            print(self.macro_commands[macro_label]+1)
+        for automation_label in range(1, len(self.automation_commands)):
+            print(self.automation_commands[automation_label] + 1)
 
 
-
-
-class AUTOKEYPRO():
+class AUTOKEYPRO:
 
     def __init__(self):
         self.state = "first_boot"
-        self.macro_profiles = []
+        self.automation_profiles = []
         self.label_counter = 1
-        self.active_profile
+        # self.active_profile (python told me to comment this line for now)
 
     def display_profiles(self):
-        for profile in self.macro_profiles:
+        for profile in self.automation_profiles:
             print(profile)
 
-
-#TODO: make this guy save the macros in a file or something.
-    def create_macro_profile(self):
+    #TODO: make this guy save the automations in a file or something.
+    def create_automation_profile(self):
         profile_name = input("Automation name : ")
-        retProf = MacroProfile(profile_name,self.label_counter)
+        retProf = automationProfile(profile_name, self.label_counter)
         self.label_counter += 1
-        self.macro_profiles.append(retProf)
+        self.automation_profiles.append(retProf)
 
-
-
-#TODO: make the guy below do more stuff.
-    def display_menu(self): #will be replaced by a gui later, or something like that
-        if self.state == "first_boot" :
+    #TODO: make the guy below do more stuff.
+    def display_menu(self):  #will be replaced by a gui later, or something like that
+        if self.state == "first_boot":
             print("Welcome to the menu")
 
-            if(not self.macro_profiles):
-                ret = input("You have no automation profiles as of yet, would you like to make one? [y,n]")
-                if ret.lower() == "yes" or ret.lower() == "y" :
-                    self.create_macro_profile()
+            if (not self.automation_profiles):
+                ret = input("You have no automations saved as of yet, would you like to make one? [y,n]")
+                if ret.lower() == "yes" or ret.lower() == "y":
+                    self.create_automation_profile()
 
         elif self.state == "default":
 
@@ -84,23 +79,18 @@ class AUTOKEYPRO():
                 print("PROFILE SELECTION: \n ")
                 self.display_profiles()
                 int_ret = int(input())
-                self.active_profile = self.macro_profiles[int_ret]
+                self.active_profile = self.automation_profiles[int_ret]
 
 
             elif ret == 2:
-                self.create_macro_profile()
+                self.create_automation_profile()
 
             else:
                 exit()
-
-
-
-
 
     def __main__(self):
 
         main_program = AUTOKEYPRO()
 
-        while 1 :
+        while 1:
             main_program.display_menu()
-
