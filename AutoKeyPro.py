@@ -1,4 +1,3 @@
-
 # AutoKeyPro™ developed by ARM Industries.
 
 # @author :  SpaghettiSalesman & Dimitri ARM on GitHub
@@ -9,8 +8,10 @@
 # We will be changing this implementation for multi-file one, but whatever.
 
 # leaving this here for our reference
-'''module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_CONSTANT_NAME,
-CLASS_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name.'''
+"""
+module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_CONSTANT_NAME,
+CLASS_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name.
+"""
 
 
 class AutomationCommand:
@@ -18,6 +19,7 @@ class AutomationCommand:
         self.input_combination = input_combination
         self.output_action = output_action
         self.automation_label = automation_label
+
 
 class AutomationProfile:
     def __init__(self, profile_name, automation_profile_label):
@@ -27,19 +29,26 @@ class AutomationProfile:
 
     def create_automation(self):
         pass
-        #TODO: Get user inputs in a working manner
+        # TODO: Get user inputs in a working manner
 
     def edit_automation(self, automation_label):
         pass
-        #TODO: Add the editing functionality.
+        # TODO: Add the editing functionality.
 
     def delete_automation(self, automation_label):
         pass
-        #TODO: Implement later, also dont forget to de-increment the labels by one.
+        # TODO: Implement later, also dont forget to de-increment the labels by one.
 
     def view_commands(self):
         for automation_label in range(1, len(self.automation_commands)):
             print(self.automation_commands[automation_label] + 1)
+
+
+def main():
+    main_program = AUTOKEYPRO()
+
+    while 1:
+        main_program.display_menu()
 
 
 class AUTOKEYPRO:
@@ -54,27 +63,28 @@ class AUTOKEYPRO:
         for profile in self.automation_profiles:
             print(profile)
 
-    #TODO: make this guy save the automations in a file or something.
+    # TODO: make this guy save the automations in a file or something.
     def create_automation_profile(self):
         profile_name = input("Automation name : ")
         retProf = automation_profile(profile_name, self.label_counter)
         self.label_counter += 1
         self.automation_profiles.append(retProf)
 
-    #TODO: make the guy below do more stuff.
-    def display_menu(self):  #will be replaced by a gui later, or something like that
-        if self.state == "first_boot":
+    # TODO: make the guy below do more stuff.
+    def display_menu(self):  # will be replaced by a gui later, or something like that
+
+        if self.state == "first_boot":  # this line is not working, welcome to menu reprints
             print("Welcome to the menu")
 
-            if (not self.automation_profiles):
+            if not self.automation_profiles:
                 ret = input("You have no automations saved as of yet, would you like to make one? [y,n]")
                 if ret.lower() == "yes" or ret.lower() == "y":
                     self.create_automation_profile()
 
         elif self.state == "default":
 
-            print("1. SELECT PROFILE")
-            print("2. CREATE PROFILE")
+            print("1. SELECT AUTOMATION")
+            print("2. CREATE AUTOMATION")
             print("3. EXIT")
 
             ret = input()
@@ -92,9 +102,7 @@ class AUTOKEYPRO:
             else:
                 exit()
 
-    def __main__(self):
 
-        main_program = AUTOKEYPRO()
-
-        while 1:
-            main_program.display_menu()
+# I realized we need these lines for program to run
+if __name__ == '__main__':
+    main()
