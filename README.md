@@ -1,8 +1,27 @@
-# TODOs 
+# AutoKeyPro™
+ Program for General UI Automations.
 
-- Flesh out display_menu() a bit more | Might replace with a GUI in a later implementations
-- Add functionality for editing automations from the user's end.
-- Set up the event recognition
-- Add functionality to remove automations from the user's end.
-- Properly have the automations be stored in a file.
-- T.B.D.
+    Developed by ARM Industries.
+
+# Motivation
+
+This project was started because I had to remove a lot of followers from my facebook account,
+which was a repetitive task, and I thought "man, I wish I had
+a program to do this"
+
+Then I had to set up a questionarie from a wordDoc, had to label each
+question with their respective number 120 times, and made me think again
+"man, I wish I had a program to do this"
+
+and so AutoKeyPro was born.
+
+# Use Cases
+
+
+# Support
+
+Join the support community at https://discord.gg/DRZrUSwW99
+
+# Credits
+
+SpaguettiSalesman and DimitriARM.
