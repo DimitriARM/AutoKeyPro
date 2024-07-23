@@ -1,57 +1,4 @@
-# AutoKeyPro™ developed by ARM Industries.
-
-# @author :  SpaghettiSalesman & Dimitri ARM on GitHub
-
-
-# DEPRECATED: One file implementation, this wont be pretty to look at, but whatever.
-
-# We will be changing this implementation for multi-file one, but whatever.
-
-# leaving this here for our reference
-"""
-module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_CONSTANT_NAME,
-CLASS_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name.
-"""
-
-
-class AutomationCommand:
-    def __init__(self, input_combination, output_action, automation_label):
-        self.input_combination = input_combination
-        self.output_action = output_action
-        self.automation_label = automation_label
-
-
-class AutomationProfile:
-    def __init__(self, profile_name, automation_profile_label):
-        self.profile_name = profile_name
-        self.automation_profile_label = automation_profile_label
-        self.automation_commands = {}
-
-    def create_automation(self):
-        pass
-        # TODO: Get user inputs in a working manner
-
-    def edit_automation(self, automation_label):
-        pass
-        # TODO: Add the editing functionality.
-
-    def delete_automation(self, automation_label):
-        pass
-        # TODO: Implement later, also dont forget to de-increment the labels by one.
-
-    def view_commands(self):
-        for automation_label in range(1, len(self.automation_commands)):
-            print(self.automation_commands[automation_label] + 1)
-
-
-def main():
-    main_program = AUTOKEYPRO()
-
-    while 1:
-        main_program.display_menu()
-
-
-class AUTOKEYPRO:
+class AutoKeyPro:
 
     def __init__(self):
         self.state = "first_boot"
@@ -80,6 +27,8 @@ class AUTOKEYPRO:
                 ret = input("You have no automations saved as of yet, would you like to make one? [y,n]")
                 if ret.lower() == "yes" or ret.lower() == "y":
                     self.create_automation_profile()
+                else:
+                    exit(0)
 
         elif self.state == "default":
 
@@ -101,8 +50,3 @@ class AUTOKEYPRO:
 
             else:
                 exit()
-
-
-# I realized we need these lines for program to run
-if __name__ == '__main__':
-    main()
