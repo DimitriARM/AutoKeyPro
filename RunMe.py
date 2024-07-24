@@ -20,7 +20,9 @@ from AutoKeyPro import *
 
 def main():
     main_program = AutoKeyPro()
-
+    print('')
+    print('AutoKeyPro™ developed by ARM Industries.')
+    print('')
     while 1:
         main_program.display_menu()
 
